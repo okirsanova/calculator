@@ -11,30 +11,39 @@ public class Calculator {
 
         String a = expression[0];
         String b = expression[2];
+        String c = expression[4];
         String op = expression[1];
+        String op2 = expression[3];
 
-        double da = Double.parseDouble(a);
+        if (expression.length == 5) {
+            System.out.println("HEEEY!");}
+
+            double da = Double.parseDouble(a);
         double db = Double.parseDouble(b);
+        double dc = Double.parseDouble(c);
 
-        double result = 0; // not needed, can be used instead of default
+        double result;
+        double result2;
         switch (op) {
             case "+":
-            case "#":
                 result = da + db;
                 break;
             case "-":
                 result = da - db;
                 break;
-            case "*":
-                result = da * db;
-                break;
-            case "/":
-            result = da / db;
-            break;
             default:
                 return "Error";
-                }
+            }
 
-        return String.valueOf(result);
-    }
-}
+            switch (op2) {
+                case "+":
+                    result2 = result + dc;
+                    break;
+                case "-":
+                    result2 = result - dc;
+                    break;
+                default:
+                    return "Error";
+            }
+            return String.valueOf(result2);
+        } }
