@@ -9,41 +9,32 @@ public class Calculator {
 
     public String calculate(String[] expression) {
 
-        String a = expression[0];
-        String b = expression[2];
-        String c = expression[4];
-        String op = expression[1];
-        String op2 = expression[3];
+        double result = Double.parseDouble(expression[0]);
 
-        if (expression.length == 5) {
-            System.out.println("HEEEY!");}
 
-            double da = Double.parseDouble(a);
-        double db = Double.parseDouble(b);
-        double dc = Double.parseDouble(c);
-
-        double result;
-        double result2;
-        switch (op) {
-            case "+":
-                result = da + db;
-                break;
-            case "-":
-                result = da - db;
-                break;
-            default:
-                return "Error";
-            }
-
-            switch (op2) {
+        for (int i = 1; i < expression.length; i +=2){
+            System.out.println(i + ": " + expression[i]);
+            String op = expression[i];
+            double b = Double.parseDouble(expression[i + 1]);
+            switch (op) {
                 case "+":
-                    result2 = result + dc;
+                    result += b;
                     break;
                 case "-":
-                    result2 = result - dc;
+                    result -= b;
+                    break;
+                case "/":
+                    result /= b;
+                    break;
+                case "*":
+                    result *= b;
                     break;
                 default:
                     return "Error";
+
             }
-            return String.valueOf(result2);
-        } }
+        }
+
+        return String.valueOf(result);
+    }
+}
